@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+    <title>แสดงรูปภาพวงล้อดวงชะตา</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #fdfbf7;
+            padding: 20px;
+        }
+        .img-container {
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        .img-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 3px solid #8b0000;
+        }
+		
+    </style>
+	</head>
+<body>
+
+    <h2>รูปภาพวงล้อทำนายดวงชะตาประจำปีเกิด</h2>
+
+    <div class="img-container">
+        <!-- ใส่ชื่อไฟล์รูปภาพของคุณในช่อง src -->
+        <img src="w280.jpg" alt="วงล้อดวงชะตาประจำปีเกิด" width="280" height="286"> </div>
+
+</body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทำนายดวงชะตาประจำปีเกิด - ตำราพรหมชาติ</title>
+    <style>
+        body {
+            font-family: 'Sarabun', Arial, sans-serif;
+            background-color: #fdfbf7;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            border: 2px solid #b8860b;
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #8b0000;
+            margin-top: 0;
+        }
+        .instruction {
+            background-color: #fff9e6;
+            border-left: 4px solid #b8860b;
+            padding: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #8b0000;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #a00000;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            display: none;
+        }
+        .result h3 {
+            margin-top: 0;
+            color: #8b0000;
+            text-align: center;
+            font-size: 22px;
+        }
+        .result p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+
+<div class="container">
+    <h2>ทำนายดวงชะตาประจำปีเกิด</h2>
+    
+    <div class="instruction">
+        <strong>เกณฑ์การคำนวณ:</strong><br>
+        • <strong>ชาย:</strong> เริ่มนับจากเจดีย์ เวียนไปทางขวามือ (ตามเข็มนาฬิกา)<br>
+        • <strong>หญิง:</strong> เริ่มนับจากเจดีย์ เวียนไปทางซ้ายมือ (ทวนเข็มนาฬิกา)
+    </div>
+
+    <div class="form-group">
+        <label for="gender">เลือกเพศ:</label>
+        <select id="gender">
+            <option value="male">ชาย</option>
+            <option value="female">หญิง</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="age">กรอกอายุปัจจุบัน (ปี):</label>
+        <input type="number" id="age" min="1" placeholder="เช่น 25" value="25">
+    </div>
+
+    <button onClick="predictFortune()">ทำนายดวงชะตา</button>
+
+    <div id="resultBox" class="result">
+        <h3 id="symbolTitle">ตกชะตา: -</h3>
+        <p id="predictionText"></p>
+    </div>
+</div>
+
+<script>
+    // ข้อมูลคำทำนายของทั้ง 12 สัญลักษณ์ ตามลำดับเวียนขวา (ชาย) เริ่มจากเจดีย์
+    const fortuneData = [
+        {
+            name: "เจดีย์",
+            desc: "ตกเจดีย์ ทำนายว่า ปีนี้จะมีความสุขกายสบายใจ ได้ทำบุญกุศล อยู่เย็นเป็นสุข มีโชคลาภ กิจการงานเจริญก้าวหน้าดี"
+        },
+        {
+            name: "ฉัตรเงิน",
+            desc: "ตกฉัตรเงิน ทำนายว่า ปีนี้จะมีความสุข สมบูรณ์ มีผู้ใหญ่ให้การสนับสนุนอุปถัมภ์ ได้รับลาภยศ เงินทอง และความสะดวกสบาย"
+        },
+        {
+            name: "คนคอขาด",
+            desc: "ตกคนคอขาด ทำนายว่า ปีนี้เป็นปีที่ไม่ค่อยดี ให้ระวังเรื่องอุบัติเหตุ เลือดตกยางออก มีเรื่องเดือดร้อนใจ ไม่ควรประมาทในการดำเนินชีวิต"
+        },
+        {
+            name: "เรือนหลวง",
+            desc: "ตกเรือนหลวง ทำนายว่า ปีนี้มีโชคลาภ วาสนาดี ได้รับความเคารพนับถือ การงานประสบความสำเร็จ มีเกียรติยศและตำแหน่งหน้าที่ดีขึ้น"
+        },
+        {
+            name: "ปราสาท",
+            desc: "ตกปราสาท ทำนายว่า ปีนี้จะมีความสมบูรณ์พูนสุข ได้รับโชคลาภเงินทอง ค้าขายได้กำไร มีความเจริญรุ่งเรืองในชีวิต"
+        },
+        {
+            name: "ราหู",
+            desc: "ตกราหู ทำนายว่า ปีนี้ให้ระวังเรื่องคดีความ มีเรื่องเดือดร้อนวุ่นวายใจ เสียทรัพย์สินเงินทอง หรือมีคนปองร้าย ให้ตั้งมั่นในความไม่ประมาท"
+        },
+        {
+            name: "ฉัตรทอง",
+            desc: "ตกฉัตรทอง ทำนายว่า ปีนี้จะได้รับความสุขกายสบายใจ มีผู้ใหญ่เมตตาอุปถัมภ์ ได้รับลาภยศ สรรเสริญ และสิ่งมงคลเข้าสู่ชีวิต"
+        },
+        {
+            name: "เทวดาขี่เต่า",
+            desc: "ตกเทวดาขี่เต่า ทำนายว่า ปีนี้การงานและชีวิตจะดำเนินไปเรื่อยๆ ช้าๆ แต่มีความมั่นคง ปลอดภัยดี ไม่ควรใจร้อนในการตัดสินใจ"
+        },
+        {
+            name: "คนตรวนชะตา",
+            desc: "ตกคนตรวนชะตา ทำนายว่า ปีนี้จะมีความอึดอัดใจ มีเรื่องติดขัดในการทำงานหรือการเงิน รู้สึกเหมือนถูกกักขังหรือขาดอิสระ ให้มีสติอดทน"
+        },
+        {
+            name: "พ่อหมอ",
+            desc: "ตกพ่อหมอ ทำนายว่า ปีนี้จะมีคนเข้ามาขอความช่วยเหลือหรือปรึกษาปัญหา ได้รับความเคารพนับถือ ใช้สติปัญญาแก้ไขปัญหาให้ผ่านพ้นไปได้"
+        },
+        {
+            name: "แม่มด",
+            desc: "ตกแม่มด ทำนายว่า ปีนี้ให้ระวังถูกหลอกลวง เสียรู้คน มีเรื่องลุ่มหลงหรือเสน่หาเข้ามา ให้ระมัดระวังเรื่องการเชื่อคนง่าย"
+        },
+        {
+            name: "นาคราช",
+            desc: "ตกนาคราช ทำนายว่า ปีนี้ให้ระวังเรื่องอารมณ์ร้อน การทะเลาะวิวาท ระวังของร้อนหรือพิษภัยต่างๆ ให้ควบคุมอารมณ์และสติให้ดี"
+        }
+    ];
+
+    function predictFortune() {
+        const gender = document.getElementById("gender").value;
+        const age = parseInt(document.getElementById("age").value);
+
+        if (isNaN(age) || age < 1) {
+            alert("กรุณากรอกอายุให้ถูกต้อง");
+            return;
+        }
+
+        let index = 0;
+
+        if (gender === "male") {
+            // ชาย: นับเวียนขวา (ตามเข็มนาฬิกา) เริ่มที่เจดีย์ (index 0)
+            index = (age - 1) % 12;
+        } else {
+            // หญิง: นับเวียนซ้าย (ทวนเข็มนาฬิกา) เริ่มที่เจดีย์ (index 0)
+            index = (12 - ((age - 1) % 12)) % 12;
+        }
+
+        const result = fortuneData[index];
+
+        // แสดงผลลัพธ์
+        document.getElementById("symbolTitle").innerText = "ตกชะตา: " + result.name;
+        document.getElementById("predictionText").innerText = result.desc;
+        document.getElementById("resultBox").style.display = "block";
+    }
+	
+</script>
+
+</body>
+</html>
